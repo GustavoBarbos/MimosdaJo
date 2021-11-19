@@ -30,7 +30,7 @@ class PrincipalPage extends Component {
                     <InfoStore/>
                     <CarouselDeProdutos />
                     <Footer/>
-                    <div>alo</div>
+   
                 </Scroll>
             </div>
         )
