@@ -26,9 +26,9 @@ class PrincipalPage extends Component {
             <div>
                 
                 <Scroll>
-                    <Carousel />
+                    <Carousel/>
                     <InfoStore/>
-                    <CarouselDeProdutos />
+                    <CarouselDeProdutos/>
                     <Footer/>
    
                 </Scroll>
