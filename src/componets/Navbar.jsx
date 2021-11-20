@@ -21,11 +21,20 @@ cursor: pointer;
 const FiltersNavbar = styled.h5`
 display: flex;
 justify-content: space-around;
-width: 30vw;
+width: 40vw;
 cursor: pointer;
 
 text-decoration: none;
+a{
+  list-style: none;
+  list-style-type: none;
+}
 li{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 12rem;
+  text-align: center;
   list-style-type: none;
 }
 @media (max-width: 960px) {
@@ -65,7 +74,7 @@ li{
   align-items: center;
   justify-content: center;
   list-style: none;
- 
+  
   width: 100vw;
   text-align: center;
   height: 4rem;
@@ -103,13 +112,13 @@ class Navbar extends Component {
   render() {
     return (<>
       <ContainerGeral>
-      <Link style={{textDecoration : "none", color: "black"}} to = '/'><NameStore>Mimôs da Jô </NameStore></Link>
+        <Link style={{ textDecoration: "none", color: "black" }} to='/'><NameStore>Mimôs da Jô </NameStore></Link>
         <FiltersNavbar>
-          <li>Camisas</li>
-          <li>Calças</li>
-          <li>Panos</li>
+          <Link style={{color : 'black' , textDecoration: "none" }} to='/artesanato'><li>Artesanato</li></Link>
+          <Link  style={{color : 'black' , textDecoration: "none" }} to='/toalhas'><li>Toalhas</li></Link>
+          <Link  style={{color : 'black' , textDecoration: "none" }} to='/panoDePratos'><li>Pano de Pratos</li></Link>
         </FiltersNavbar>
-        <Link to = '/bag'><Bag><FaShoppingBag /></Bag></Link>
+        <Link to='/bag'><Bag><FaShoppingBag style={{ color: '#FF8783' }} /></Bag></Link>
         <Menu onClick={this.handleLinksNavbar}><AiOutlineMenu /></Menu>
 
 
@@ -117,9 +126,9 @@ class Navbar extends Component {
       {this.state.boolean ?
         <ResponsiveNavbar>
 
-          <li>Camisas</li>
-          <li>Calças</li>
-          <li>Panos</li>
+          <Link  style={{color : 'black' , textDecoration: "none" }} to='/artesanato'><li>Artesanato</li></Link>
+          <Link  style={{color : 'black' , textDecoration: "none" }} to='/toalhas'><li>Toalhas</li></Link>
+          <Link  style={{color : 'black' , textDecoration: "none" }} to='/panoDePratos'><li>Pano de Pratos</li></Link>
 
         </ResponsiveNavbar>
         :

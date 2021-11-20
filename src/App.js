@@ -4,6 +4,7 @@ import React from 'react';
 import PrincipalPage from './pages/PrincipalPage';
 import Bag from './pages/Bag';
 import Navbar from './componets/Navbar';
+import Artesanato from './pages/Artesanato';
 
 
 
@@ -15,6 +16,7 @@ function App() {
       <Routes>
         <Route path='/' element={<PrincipalPage />}/>
         <Route path='/bag' element={<Bag />} />
+        <Route path='/artesanato' element={<Artesanato />} />
       </Routes>
     </div>
   );

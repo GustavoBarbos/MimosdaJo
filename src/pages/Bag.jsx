@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import CardBag from '../componets/CardBag'
 import Footer from '../componets/Footer'
+import { FaShoppingBag } from 'react-icons/fa'
 
 
 const Scroll = styled.div`
@@ -71,8 +73,54 @@ const Valor = styled.div`
 const Parcelamento = styled.div`
 
 `
+const ContainerSacola = styled.div`
+display: flex;
+justify-content: center;
+align-items: center;
+height: 60vh;
+
+`
+const Sacola = styled.div`
+display: flex;
+align-items: center;
+justify-content: center;
+flex-direction: column;
 
 
+`
+const BagIcon = styled.div`
+
+
+`
+const BagInfo = styled.div`
+
+width: 30vw;
+align-items: center;
+text-align: center;
+@media (max-width: 960px) {
+  width: 100vw;
+ 
+    
+    } 
+`
+
+const ContainerBagInfo = styled.div`
+display: flex;
+flex-direction: column;
+align-items: center;
+
+`
+const Title = styled.div`
+font-weight: 700;
+font-size: 1.2rem;
+display: flex;
+margin-top: 2rem;
+justify-content: center;
+@media (max-width: 960px) {
+  width: 100vw;
+    
+    } 
+`
 
 
 export class Bag extends Component {
@@ -81,6 +129,7 @@ export class Bag extends Component {
         produtos: [],
         valorTotal: 0
     }
+
     componentDidMount = async () => {
         let keys = await Object.keys(localStorage);
         let b = await keys.map((el) => JSON.parse(localStorage.getItem(el)))
@@ -99,25 +148,18 @@ export class Bag extends Component {
             })
         }
 
-
-
         this.setState({
             produtos: b,
 
         })
 
-
-
     }
-
-
 
     handleNew = () => {
 
         this.componentDidMount()
 
     }
-
 
     handleCompra = () => {
 
@@ -134,14 +176,29 @@ export class Bag extends Component {
                 <ContainerGeral>
 
                     {this.state.produtos.length === 0 ?
-                        <div>Sacola Vazia</div>
+                        <ContainerSacola>
+
+                            <Sacola>
+                                <BagIcon> <FaShoppingBag style={{ fontSize: "5rem", color: '#FF8783' }} /></BagIcon>
+                                <ContainerBagInfo>
+                                    <Title>Sua sacola está vazia</Title>
+                                    <BagInfo>
+                                        Vá para a <Link to = '/'>{`Página inicial`}</Link> ou procure no site os produtos que vão te deixar feliz.
+                                    </BagInfo>
+                                </ContainerBagInfo>
+
+                            </Sacola>
+
+                        </ContainerSacola>
+
                         :
+
                         this.state.produtos.map((item) => <CardBag name={item.name} price={item.price} quantidade={item.quantidade} id={item.id} newValue={this.handleNew} />
                         )}
                     {this.state.produtos.length === 0 ?
                         null
                         :
-                        
+
                         <ContainerValorTotal>
                             <ValorTotal>
                                 <Valor>Total ({this.state.produtos.length}) : R$ {this.state.valorTotal}</Valor>
