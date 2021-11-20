@@ -7,7 +7,7 @@ import { AiFillCaretRight, AiFillCaretLeft} from 'react-icons/ai'
 const Corpo = styled.div`
 
 width: 100%;
-background-color: #e1e1e1;
+background-color: white;
 color: #1e1e1e;
 display: flex;
 justify-content: center;
@@ -24,7 +24,13 @@ border-radius: 16px;
 background-color: white;
 
 
+@media (max-width: 960px) {
+display: flex;
+flex-direction: column;
+align-items: center;
+    width: 100vw;
 
+} 
 
 `
 
@@ -34,12 +40,14 @@ display: flex;
 overflow-x: auto;
 scroll-behavior: smooth;
 
-
-
 ::-webkit-scrollbar{
     display: none;
 }
+@media (max-width: 960px) {
 
+width: 100vw;
+margin-left: 0;
+} 
 
 `
 const Item = styled.div`
@@ -111,18 +119,21 @@ font-weight: bold;
 const Button = styled.div`
 width: 100%;
 text-align: center;
+display: flex;
+justify-content: center;
+align-items: center;
 button{
 background-color: transparent;
 border: none;
 cursor: pointer;
 font-size: 3rem;
 margin-top: 1rem;
+@media (max-width: 800px) {
+
+display: none;
+} 
 }
-@media (max-width: 960px) {
 
-    display: none;
-
-    } 
 `
 
 const ContainerInfo = styled.div`
