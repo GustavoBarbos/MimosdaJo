@@ -1,188 +1,104 @@
-import React from 'react'
-import styled from 'styled-components'
-import { useState, useRef } from 'react'
-import { AiFillCaretRight, AiFillCaretLeft } from 'react-icons/ai'
-import { Link } from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
+import { useParams } from 'react-router';
+import styled from 'styled-components';
+import Footer from '../componets/Footer'
 
+const Produto = styled.div`
+background-color: black;
 
-const Corpo = styled.div`
-
-width: 100%;
-background-color: white;
-color: #1e1e1e;
+color: white;
 display: flex;
 justify-content: center;
 align-items: center;
-margin-top: 1rem;
 
 
 `
-
-const Container = styled.div`
-
-max-width: 80vw;
-border-radius: 16px;
-background-color: white;
-
-
-@media (max-width: 960px) {
+const Name = styled.div`
 display: flex;
-flex-direction: column;
 align-items: center;
-    width: 100vw;
-
-} 
-
-`
-
-const Carousel = styled.div`
-
-display: flex;
-overflow-x: auto;
-scroll-behavior: smooth;
-
-::-webkit-scrollbar{
-    display: none;
-}
-@media (max-width: 960px) {
-
-width: 100vw;
-margin-left: 0;
-} 
-
-`
-const Item = styled.div`
-
-background-color: white;
-margin: 10px;
-padding: 10px;
-width: 280px;
-border-radius: 16px;
-flex: none;
-
-
-`
-const Image = styled.div`
-img{
-    width: 260px;
-    height: 260px;
-    object-fit: cover;
-}
-
-`
-const Info = styled.div`
-height: 230px;
-display: flex;
-flex-direction: column;
-justify-content: space-between;
-
-
-`
-const Name = styled.span`
-
-display: block;
-text-align: center;
-color: #1e1e1e;
-padding: 5px;
-border-radius: 10px;
-font-size: 1.2rem;
-font-weight: bold;
-margin: 10px 0;
-height: 70px;
-`
-const OldPrice = styled.span`
-display: block;
-text-align: center;
-color: #1e1e1e;
-padding: 5px;
-border-radius: 10px;
-
-font-size: 0.9rem;
-text-decoration:line-through;
-flex-grow: 1;
-color: black;
-`
-const Price = styled.span`
-display: block;
-text-align: center;
-color: #1e1e1e;
-padding: 5px;
-border-radius: 10px;
-margin-top: -30px;
-
-font-size: 1.2rem;
-font-weight: bold;
-
-
-
-
-`
-const Button = styled.div`
-width: 100%;
-text-align: center;
-display: flex;
-justify-content: center;
-align-items: center;
-button{
-background-color: transparent;
-border: none;
-cursor: pointer;
-font-size: 3rem;
-margin-top: 1rem;
-@media (max-width: 800px) {
-
-display: none;
-} 
-}
-
-`
-
-const ContainerInfo = styled.div`
-
-width: 100vw;
-display: flex;
-justify-content: center;
-margin-top: 7rem;
-`
-const Escrita = styled.div`
+font-size: 1.4rem;
 font-weight: 700;
-width: 80vw;
-border-bottom: 0px;
-margin-bottom: 0px;
+padding-left: 3rem;
+height: 5rem;
 
-@media (max-width: 960px) {
-text-align: center;
+`
+const Container = styled.div`
+    display: flex;
+    min-height: calc(100vh - 28px - 165px) ;
+    
+    @media (max-width: 960px) {
+    flex-direction: column;
+    
     } 
 
 `
+const ContainerImgPrincipal = styled.div`
+width: 50vw;
+height: 75vh;
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+align-items: center;
 
-const Geral = styled.div`
-margin-top: 12rem;
+@media (max-width: 960px) {
+    width: 100%;
+    justify-content: space-around;
+    } 
 `
-const Bag = styled.div`
-background-color: #FF8783;
-display: block;
-text-align: center;
-color: #1e1e1e;
-padding: 5px;
-border-radius: 10px;
-cursor: pointer;
-margin-top: 10px;
-font-size: 1.2rem;
-font-weight: bold;
-text-align: center;
+const ContainerVenda = styled.div`
+    
+    
+`
+const ImgPrincipal = styled.img`
+    
+    width: 20rem ;
+    height: 25rem;
+    border: 1px solid black;
+    @media (max-width: 960px) {
+    width: 80vw;
+    justify-content: space-around;
+    } 
+`
+const ContainerImages = styled.div`
+    
+    display: flex;
+    justify-content: center;
+    @media (max-width: 960px) {
+    width: 90vw;
+    justify-content: space-around;
+    } 
+    
+`
+const Images = styled.img`
+    
+    width: 4rem;
+    height: 4rem;
+    margin: 1rem;
+    border:1px solid black;
+    @media (max-width: 960px) {
+    margin: 0;
+    width: 60px;
+    height: 65px;
+    justify-content: space-around;
+    } 
+    
 `
 
 
-export default function CarouselDeProdutos() {
+function DetailItem() {
 
-    const [data] = useState([
+    const { id } = useParams()
+
+    const [principalImage, setPrincipalImage] = useState("https://www.hypeness.com.br/1/2017/04/roupa2.jpg")
+    const [item, setItem] = useState([])
+    const [data, setData] = useState([
         {
             "id": "1",
             "name": "pano",
             "oldprice": "10",
             "price": "15",
             "image": "https://www.hypeness.com.br/1/2017/04/roupa2.jpg",
+            "images":[ "https://www.hypeness.com.br/1/2017/04/roupa2.jpg","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkMfBHClUtb-DJoUBbYBsrliteYwIsdt6uGA&usqp=CAU","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQOAFmM7eYYfajiRUny9Q9offXactixWfQ0XQ&usqp=CAU","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSnxNjUA2E3OvehQcprY4-RjbRUt3To-EE1hQ&usqp=CAU"] ,
             "quantidade": "1"
         },
         {
@@ -284,85 +200,62 @@ export default function CarouselDeProdutos() {
 
     ])
 
-    const carousel = useRef(null)
+    useEffect(() => {
 
-    const handleLeftClick = (e) => {
-        e.preventDefault()
+     
+            let response = data.filter(item => {
+                return item.id.includes(id)
+            })
 
-        carousel.current.scrollLeft -= carousel.current.offsetWidth
-    }
-    const handleRightClick = (e) => {
-        e.preventDefault()
-        carousel.current.scrollLeft += carousel.current.offsetWidth
-    }
+            setItem(response)
 
+    }, [])
 
 
 
 
-    if (!data || !data.length) return null
+    return (
+        <div style={{ display: 'flex', flexDirection: "column" }}>
+            
+            {item.length ?
+                <div>
+                    <Produto>Produtos com 10%OFF</Produto>
+                    <Name>{item[0].name}</Name>
+                    <Container>
 
-
-
-    const handleBag = (key, item) => {
-
-        localStorage.setItem(key, JSON.stringify(item))
-
-    }
-
-
-    return (<Geral>
-        <ContainerInfo>
-            <Escrita>
-                RECOMENDADOS PARA VOCÊ
-
-            </Escrita>
-        </ContainerInfo>
-        <Corpo>
-            <Container>
-                <Carousel ref={carousel}>
-
-                    {data.map((item) => {
-                        return <Item>
+                        <ContainerImgPrincipal>
+                            <ImgPrincipal src={principalImage} alt={item.name} />
+                            <ContainerImages>
+                                {item[0].images.map(produto => <Images onClick={() => setPrincipalImage(produto)} src={produto} alt={item.name} />)}
+                               
                             
-                            <Link to={`/item/${item.id}`}>
-                                <Image>
-                                    <img src={item.image} alt={item.name} />
-                                </Image>
-                            </Link>
+                            {console.log(principalImage)}
+                            
+                            </ContainerImages>
+                        </ContainerImgPrincipal>
 
-                            <Info>
-
-                                <Link to={`/item/${item.id}`} style={{ textDecoration: 'none' }}>
-                                    <Name>{item.name}</Name>
-                                </Link>
-
-                                <OldPrice>R${item.oldprice}</OldPrice>
-
-                                <Price>R${item.price}</Price>
-
-                                <Bag onClick={() => {
-                                    handleBag(item.id, item)
-                                }}> 
-                    
-                                Adicionar ao Carrinho 
-
-                                </Bag>
-
-                            </Info>
-                        </Item>
-
-                    })}
+                        {/* <ContainerVenda>
+                            <div>{item[0].oldprice}</div>
+                            <div>{item[0].price}</div>
+                            <div>{item[0].quantidade}</div>
+                        </ContainerVenda> */}
+                    </Container>
+                    <Footer/>
 
 
-                </Carousel>
-                <Button>
-                    <button onClick={handleLeftClick}><AiFillCaretLeft /> </button>
-                    <button onClick={handleRightClick}><AiFillCaretRight /></button>
-                </Button>
 
-            </Container>
-        </Corpo>
-    </Geral>
+
+
+                </div>
+
+
+                :
+                <h1>aguarde</h1>
+            }
+
+
+        </div>
     )
 }
+
+export default DetailItem

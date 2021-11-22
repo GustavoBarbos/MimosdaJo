@@ -15,15 +15,19 @@ background-color: white;
 
 `
 const NameStore = styled.h3`
+
 width: 30vw;
 cursor: pointer;
+height: 36px;
+
 `
 const FiltersNavbar = styled.h5`
 display: flex;
 justify-content: space-around;
+align-items: center;
 width: 40vw;
 cursor: pointer;
-
+height: 36px;
 text-decoration: none;
 a{
   list-style: none;
@@ -46,11 +50,17 @@ const Bag = styled.div`
 width: 30vw;
 font-size: 1.6rem;
 cursor: pointer;
+height: 36px;
+margin-top: -8px;
+display: flex;
+align-items: center;
+justify-content: center;
 
 @media (max-width: 960px) {
     display: block;
     width: 40vw;
     text-align: end;
+    margin-top: -6px;
    
     } 
 
@@ -58,6 +68,7 @@ cursor: pointer;
 const Menu = styled.div`
 display: none;
 font-size: 1.6rem;
+
 @media (max-width: 960px) {
     display: block;
    

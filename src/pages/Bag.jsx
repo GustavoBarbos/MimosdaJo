@@ -68,7 +68,8 @@ cursor: pointer;
     } 
 `
 const Valor = styled.div`
-
+width: 100vw;
+text-align: center;
 `
 const Parcelamento = styled.div`
 
