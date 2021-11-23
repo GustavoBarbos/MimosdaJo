@@ -9,6 +9,7 @@ margin-top: 5rem;
 height: 15rem;
 background-color: black;
 
+
 `
 const Sobre = styled.div`
 display: flex;

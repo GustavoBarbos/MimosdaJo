@@ -13,18 +13,21 @@ justify-content: space-around;
 align-items: center;
 text-align: center;
 background-color: white;
+width: 100%;
+
 
 
 `
 const NameStore = styled.h3`
 
-width: 30vw;
+width: 25vw;
 cursor: pointer;
 height: 36px;
 
 `
 const FiltersNavbar = styled.h5`
 display: flex;
+
 justify-content: space-around;
 align-items: center;
 width: 40vw;
@@ -39,9 +42,10 @@ li{
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 12rem;
+  width: 12vw;
   text-align: center;
   list-style-type: none;
+  
 }
 @media (max-width: 960px) {
     display: none;
@@ -63,6 +67,8 @@ font-weight: 900;
 border-radius: 50px;
 margin-left: -10px;
 margin-top: 15px;
+
+
 @media (max-width: 960px) {
     
    
@@ -74,7 +80,7 @@ margin-top: 15px;
 
 `
 const Bag = styled.div`
-width: 30vw;
+width: 25vw;
 font-size: 1.6rem;
 cursor: pointer;
 height: 36px;
@@ -82,7 +88,6 @@ margin-top: -8px;
 display: flex;
 align-items: center;
 justify-content: center;
-
 @media (max-width: 960px) {
   
   justify-content: flex-end;
