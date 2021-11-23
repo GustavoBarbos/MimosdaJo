@@ -16,14 +16,15 @@ height: calc(100vh - 85px);
 `
 
 class PrincipalPage extends Component {
+   
     render() {
         return (
             <div>
-                
+            
                 <Scroll>
                     <Carousel/>
                     <InfoStore/>
-                    <CarouselDeProdutos/>
+                    <CarouselDeProdutos totalItens = {this.props.totalItens}/>
                     <Footer/>
                 </Scroll>
             </div>

@@ -174,7 +174,7 @@ text-align: center;
 `
 
 
-export default function CarouselDeProdutos() {
+export default function CarouselDeProdutos(props) {
 
     const [data] = useState([
         {
@@ -304,10 +304,13 @@ export default function CarouselDeProdutos() {
 
 
 
-    const handleBag = (key, item) => {
+    const handleBag = async (key, item) => {
 
-        localStorage.setItem(key, JSON.stringify(item))
+        let keys =  await Object.keys(localStorage);
+        let quantidade = await  keys.map((el) => JSON.parse(localStorage.getItem(el)))
 
+        await localStorage.setItem(key, JSON.stringify(item))
+        await props.totalItens(quantidade.length + 1)
     }
 
 
@@ -320,6 +323,7 @@ export default function CarouselDeProdutos() {
         </ContainerInfo>
         <Corpo>
             <Container>
+                {console.log(props)}
                 <Carousel ref={carousel}>
 
                     {data.map((item) => {

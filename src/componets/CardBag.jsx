@@ -129,9 +129,12 @@ class CardBag extends Component {
         this.props.newValue()
     }
 
-    handleDeleteCard = () => {
+    handleDeleteCard = async () => {
+        let keys = await Object.keys(localStorage);
+        let quantidade = await keys.map((el) => JSON.parse(localStorage.getItem(el)))
         localStorage.removeItem(this.props.id);
         this.props.newValue()
+        this.props.delete(quantidade.length)
     }
     
 

@@ -1,5 +1,6 @@
 
-import React, { Component } from 'react'
+import React, { useState, useEffect } from 'react'
+
 import styled from 'styled-components'
 import { FaShoppingBag } from 'react-icons/fa'
 import { AiOutlineMenu } from 'react-icons/ai'
@@ -12,6 +13,7 @@ justify-content: space-around;
 align-items: center;
 text-align: center;
 background-color: white;
+
 
 `
 const NameStore = styled.h3`
@@ -46,6 +48,31 @@ li{
     color: red; 
     }  
 `
+const Count = styled.span`
+display: flex;
+align-items: center;
+justify-content: center;
+background-color: black;
+text-decoration: none;
+color: white;
+list-style-type: none;
+width: 1rem;
+height: 1rem;
+font-size: 0.7rem;
+font-weight: 900;
+border-radius: 50px;
+margin-left: -10px;
+margin-top: 15px;
+@media (max-width: 960px) {
+    
+   
+
+    text-align: end;
+
+   
+    } 
+
+`
 const Bag = styled.div`
 width: 30vw;
 font-size: 1.6rem;
@@ -57,10 +84,11 @@ align-items: center;
 justify-content: center;
 
 @media (max-width: 960px) {
-    display: block;
-    width: 40vw;
-    text-align: end;
-    margin-top: -6px;
+  
+  justify-content: flex-end;
+  margin-right: -2rem;
+  text-align: end;
+  margin-top: 2px;
    
     } 
 
@@ -106,50 +134,41 @@ li{
     } 
 
 
-`
+` 
 
-class Navbar extends Component {
+function Navbar({itens}) {
 
-  state = {
-    boolean: false
-  }
+  const [boolean, setBoolean] = useState(false)
 
-  handleLinksNavbar = () => {
-    this.setState({
-      boolean: !this.state.boolean
-    })
-  }
-
-  render() {
-    return (<>
-      <ContainerGeral>
-        <Link style={{ textDecoration: "none", color: "black" }} to='/'><NameStore>Mimôs da Jô </NameStore></Link>
-        <FiltersNavbar>
-          <Link style={{color : 'black' , textDecoration: "none" }} to='/artesanato'><li>Artesanato</li></Link>
-          <Link  style={{color : 'black' , textDecoration: "none" }} to='/toalhas'><li>Toalhas</li></Link>
-          <Link  style={{color : 'black' , textDecoration: "none" }} to='/panoDePratos'><li>Pano de Pratos</li></Link>
-        </FiltersNavbar>
-        <Link to='/bag'><Bag><FaShoppingBag style={{ color: '#FF8783' }} /></Bag></Link>
-        <Menu onClick={this.handleLinksNavbar}><AiOutlineMenu /></Menu>
+  return (<>
+    <ContainerGeral>
+      <Link style={{ textDecoration: "none", color: "black" }} to='/'><NameStore>Mimôs da Jô </NameStore></Link>
+      <FiltersNavbar>
+        <Link style={{ color: 'black', textDecoration: "none" }} to='/artesanato'><li>Artesanato</li></Link>
+        <Link style={{ color: 'black', textDecoration: "none" }} to='/toalhas'><li>Toalhas</li></Link>
+        <Link style={{ color: 'black', textDecoration: "none" }} to='/panoDePratos'><li>Pano de Pratos</li></Link>
+      </FiltersNavbar>
+      <Link to='/bag'><Bag> <FaShoppingBag style={{ color: '#FF8783' }} /> <Count>{itens}</Count></Bag>  </Link>
+      <Menu onClick={() => setBoolean(!boolean)}><AiOutlineMenu /></Menu>
 
 
-      </ContainerGeral>
-      {this.state.boolean ?
-        <ResponsiveNavbar>
+    </ContainerGeral>
+    {boolean ?
+      <ResponsiveNavbar>
 
-          <Link  style={{color : 'black' , textDecoration: "none" }} to='/artesanato'><li>Artesanato</li></Link>
-          <Link  style={{color : 'black' , textDecoration: "none" }} to='/toalhas'><li>Toalhas</li></Link>
-          <Link  style={{color : 'black' , textDecoration: "none" }} to='/panoDePratos'><li>Pano de Pratos</li></Link>
+        <Link style={{ color: 'black', textDecoration: "none" }} to='/artesanato'><li>Artesanato</li></Link>
+        <Link style={{ color: 'black', textDecoration: "none" }} to='/toalhas'><li>Toalhas</li></Link>
+        <Link style={{ color: 'black', textDecoration: "none" }} to='/panoDePratos'><li>Pano de Pratos</li></Link>
 
-        </ResponsiveNavbar>
-        :
-        undefined
-      }
+      </ResponsiveNavbar>
+      :
+      undefined
+    }
 
-    </>
-    )
-  }
+  </>
+  )
 }
+
 
 export default Navbar
 

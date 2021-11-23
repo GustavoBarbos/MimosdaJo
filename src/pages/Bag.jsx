@@ -39,6 +39,7 @@ height: 8rem;
 display: flex;
 justify-content: center;
 
+
 `
 const ValorTotal = styled.div`
 
@@ -122,6 +123,10 @@ justify-content: center;
     
     } 
 `
+const Container = styled.div`
+
+`
+
 
 
 export class Bag extends Component {
@@ -134,6 +139,8 @@ export class Bag extends Component {
     componentDidMount = async () => {
         let keys = await Object.keys(localStorage);
         let b = await keys.map((el) => JSON.parse(localStorage.getItem(el)))
+
+
 
 
         let acumulador = b.map(item => {
@@ -153,6 +160,16 @@ export class Bag extends Component {
             produtos: b,
 
         })
+        let retirar = b.map(item => {
+            let numeros = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+            return numeros.indexOf(item)
+        })
+
+        
+        let index = parseInt(retirar.splice(-1))
+        this.props.totalItens(b.length)
+        
 
     }
 
@@ -184,7 +201,7 @@ export class Bag extends Component {
                                 <ContainerBagInfo>
                                     <Title>Sua sacola está vazia</Title>
                                     <BagInfo>
-                                        Vá para a <Link to = '/'>{`Página inicial`}</Link> ou procure no site os produtos que vão te deixar feliz.
+                                        Vá para a <Link to='/'>{`Página inicial`}</Link> ou procure no site os produtos que vão te deixar feliz.
                                     </BagInfo>
                                 </ContainerBagInfo>
 
@@ -194,8 +211,10 @@ export class Bag extends Component {
 
                         :
 
-                        this.state.produtos.map((item) => <CardBag name={item.name} price={item.price} quantidade={item.quantidade} id={item.id} newValue={this.handleNew} />
+                        <Container> {this.state.produtos.map((item) => <CardBag delete = {this.props.totalItens} name={item.name} price={item.price} quantidade={item.quantidade} id={item.id} newValue={this.handleNew} />
                         )}
+                        </Container>
+                    }
                     {this.state.produtos.length === 0 ?
                         null
                         :
