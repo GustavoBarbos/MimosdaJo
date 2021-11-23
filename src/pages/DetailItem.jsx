@@ -5,7 +5,7 @@ import Footer from '../componets/Footer'
 
 const Produto = styled.div`
 
-background-color: black;
+background-color: #FF8783;
 color: white;
 display: flex;
 justify-content: center;
@@ -176,7 +176,15 @@ const DivGeral = styled.div`
 
 `
 
+const Scroll = styled.div`
+overflow-y:auto ;
+scroll-behavior: smooth;
+height: calc(100vh - 109px);
 
+::-webkit-scrollbar{
+    display: none;
+}
+`
 
 
 
@@ -257,15 +265,15 @@ function DetailItem(props) {
             "desc": "Roupas da mais alta qualidade, tentregamos para todo Brasil, além de ser um pano de alta qualidade 100% algodão ",
             "quantidade": "1"
         }
-  
+
 
     ])
 
     useEffect(() => {
 
-        let keys =  Object.keys(localStorage);
-        let quantidade =  keys.map((el) => JSON.parse(localStorage.getItem(el)))
-       
+        let keys = Object.keys(localStorage);
+        let quantidade = keys.map((el) => JSON.parse(localStorage.getItem(el)))
+
 
         let response = data.filter(item => {
             return item.id.includes(id)
@@ -301,7 +309,7 @@ function DetailItem(props) {
     const handleBag = async (key, item) => {
         let keys = await Object.keys(localStorage);
         let quantidade = await keys.map((el) => JSON.parse(localStorage.getItem(el)))
-       
+
 
         await localStorage.setItem(key, JSON.stringify(item[0]))
 
@@ -311,53 +319,53 @@ function DetailItem(props) {
 
     return (
         <div style={{ display: 'flex', flexDirection: "column" }}>
+                <Produto>Produtos com 10%OFF</Produto>
+            <Scroll>
+                {item.length ?
+                    <DivGeral>
+                        <Name>{item[0].name}</Name>
+                        <Container>
 
-            {item.length ?
-                <DivGeral>
-                    <Produto>Produtos com 10%OFF</Produto>
-                    <Name>{item[0].name}</Name>
-                    <Container>
+                            <ContainerImgPrincipal>
+                                <ImgPrincipal src={principalImage} alt={item.name} />
+                                <ContainerImages>
 
-                        <ContainerImgPrincipal>
-                            <ImgPrincipal src={principalImage} alt={item.name} />
-                            <ContainerImages>
+                                    {item[0].images.map(produto => <Images onMouseOver={() => setPrincipalImage(produto)} src={produto} alt={item.name} />)}
 
-                                {item[0].images.map(produto => <Images onMouseOver={() => setPrincipalImage(produto)} src={produto} alt={item.name} />)}
+                                </ContainerImages>
+                            </ContainerImgPrincipal>
 
-                            </ContainerImages>
-                        </ContainerImgPrincipal>
+                            <ContainerVenda>
+                                <Desc>{item[0].desc}</Desc>
+                                <ContainerValue>
 
-                        <ContainerVenda>
-                            <Desc>{item[0].desc}</Desc>
-                            <ContainerValue>
+                                    <Oldprice>De:  R${formatOldPrice()}</Oldprice>
+                                    <Price>Para:  R${formatValue()} </Price>
+                                    <Parcelamento>
+                                        ou R$ {handleParcelamento() * 2} em 2x de R$ {handleParcelamento()} sem juros
+                                    </Parcelamento>
 
-                                <Oldprice>De:  R${formatOldPrice()}</Oldprice>
-                                <Price>Para:  R${formatValue()} </Price>
-                                <Parcelamento>
-                                    ou R$ {handleParcelamento() * 2} em 2x de R$ {handleParcelamento()} sem juros
-                                </Parcelamento>
-
-                            </ContainerValue>
-                            <ContainerButtons>
-                            <ButtonCarrinho onClick={() =>  handleBag(item[0].id, item)}>Adicionar ao Carrinho</ButtonCarrinho>
-                            <ButtonVenda>Comprar</ButtonVenda>
-                            </ContainerButtons>
-                        </ContainerVenda>
-                    </Container>
-                    <Footer/>
-
-
+                                </ContainerValue>
+                                <ContainerButtons>
+                                    <ButtonCarrinho onClick={() => handleBag(item[0].id, item)}>Adicionar ao Carrinho</ButtonCarrinho>
+                                    <ButtonVenda>Comprar</ButtonVenda>
+                                </ContainerButtons>
+                            </ContainerVenda>
+                        </Container>
+                        <Footer />
 
 
 
-                </DivGeral>
 
 
-                :
-                <h1>aguarde</h1>
-            }
+                    </DivGeral>
 
 
+                    :
+                    <h1>aguarde</h1>
+                }
+
+            </Scroll>
         </div>
     )
 }
