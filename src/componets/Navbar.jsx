@@ -161,9 +161,9 @@ function Navbar({itens}) {
     {boolean ?
       <ResponsiveNavbar>
 
-        <Link style={{ color: 'black', textDecoration: "none" }} to='/artesanato'><li>Artesanato</li></Link>
-        <Link style={{ color: 'black', textDecoration: "none" }} to='/toalhas'><li>Toalhas</li></Link>
-        <Link style={{ color: 'black', textDecoration: "none" }} to='/panoDePratos'><li>Pano de Pratos</li></Link>
+        <Link style={{ color: 'black', textDecoration: "none",backgroundColor: "white" }} to='/artesanato'><li>Artesanato</li></Link>
+        <Link style={{ color: 'black', textDecoration: "none",backgroundColor: "white" }} to='/toalhas'><li>Toalhas</li></Link>
+        <Link style={{ color: 'black', textDecoration: "none",backgroundColor: "white" }} to='/panoDePratos'><li>Pano de Pratos</li></Link>
 
       </ResponsiveNavbar>
       :
