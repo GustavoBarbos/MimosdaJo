@@ -21,6 +21,13 @@ font-weight: 700;
 padding-left: 3rem;
 height: 5rem;
 
+@media (max-width: 960px) {
+    padding-left: 0;
+    text-align: center;
+    justify-content: center;
+    
+    } 
+
 `
 const Container = styled.div`
 display: flex;
