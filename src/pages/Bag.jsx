@@ -167,19 +167,19 @@ export class Bag extends Component {
             return numeros.indexOf(item)
         })
 
-        let resposta = b.map(item => `${item.name}  Quantidade = ${item.quantidade}`)
+        let resposta = b.map(item => `${item.name} Quantidade = ${item.quantidade}`)
 
         let mensagem = ``
 
         for(let i = 0; i< resposta.length;i++){
             
             mensagem += `
-            --- ${resposta[i]} ----`
+            -${resposta[i]}-`
 
         }
         
         mensagem += `
-            --- Valor Total : ${this.state.valorTotal}---`
+            -- Valor Total : ${this.state.valorTotal} --`
        
 
          this.setState({
