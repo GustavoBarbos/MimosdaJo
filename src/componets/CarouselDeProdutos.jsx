@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom'
 const Corpo = styled.div`
 
 width: 100%;
-background-color: rgb(211, 211, 211);
+background-color: rgb(238, 238, 238);
 color: #1e1e1e;
 display: flex;
 justify-content: center;
@@ -22,7 +22,7 @@ const Container = styled.div`
 
 max-width: 80vw;
 border-radius: 16px;
-background-color: white;
+background-color: rgb(238, 238, 238);
 
 
 @media (max-width: 960px) {
