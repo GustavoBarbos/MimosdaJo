@@ -231,7 +231,7 @@ export class Bag extends Component {
 
                         :
 
-                        <Container> {this.state.produtos.map((item) => <CardBag delete={this.props.totalItens} name={item.name} price={item.price} quantidade={item.quantidade} id={item.id} newValue={this.handleNew} />
+                        <Container> {this.state.produtos.map((item) => <CardBag delete={this.props.totalItens} name={item.name} price={item.price} quantidade={item.quantidade} id={item.id} image={item.image} newValue={this.handleNew} />
                         )}
                         </Container>
                     }
@@ -244,7 +244,7 @@ export class Bag extends Component {
                                 <Valor>Total ({this.state.produtos.length}) : {(this.state.valorTotal).toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}</Valor>
                                 <Parcelamento>Parcelamos em até 3x sem Juros</Parcelamento>
                                {console.log(this.state.mensagem)}
-                                <a href = {`https://api.whatsapp.com/send?phone=5511993418318&text=${this.state.mensagem    }`} ><Button onClick={this.handleCompra} >Comprar</Button></a>
+                                <a href = {`https://api.whatsapp.com/send?phone=5511955400291&text=${this.state.mensagem    }`} ><Button onClick={this.handleCompra} >Comprar</Button></a>
                             </ValorTotal>
                         </ContainerValorTotal>
                     }
