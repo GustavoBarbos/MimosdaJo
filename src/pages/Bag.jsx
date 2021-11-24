@@ -170,9 +170,9 @@ export class Bag extends Component {
         let resposta = b.map(item => `${item.name} = Quantidade = ${item.quantidade}`)
 
         let mensagem = `
-         ${resposta[1]} ,
-         ${resposta[0]} , 
-         ${this.state.valorTotal}`
+         ${resposta[1]} 
+         ${resposta[0]}  
+         Valor Total = ${this.state.valorTotal}`
 
          this.setState({
             mensagem
