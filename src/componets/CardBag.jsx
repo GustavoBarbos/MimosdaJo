@@ -20,8 +20,10 @@ display: flex;
 align-items: center;
 justify-content: space-around;
 @media (max-width: 960px) {
-height: calc(100% + 2px);
-flex-direction: column;
+height: calc(12rem);
+justify-content: space-between;
+width: 100%;
+border-radius: 10px;
 
 } 
 
@@ -35,8 +37,8 @@ display: flex;
 justify-content: center;
 align-items: center;
 @media (max-width: 960px) {
-margin-top: 1rem;
 
+width: 50%;
 
 } 
 `
@@ -56,7 +58,9 @@ const Nome = styled.div`
 width: 30vw;
 text-align: center;
 @media (max-width: 960px) {
-margin-top: 2rem;
+
+width: 100%;
+
 
 } 
  `
@@ -65,7 +69,7 @@ const Quantidade = styled.div`
  width: 3rem;
  cursor: pointer;
  @media (max-width: 960px) {
-margin-top: 2rem;
+
 
 } 
   `
@@ -73,8 +77,8 @@ const Valor = styled.div`
  text-align: center;
  width: 6rem;
   @media (max-width: 960px) {
-    margin-top: 1rem;
-
+font-size: 1.1rem;
+font-weight: 600;
 } 
    `
 
@@ -84,10 +88,11 @@ justify-content: space-around;
 width: 70%;
 
 @media (max-width: 960px) {
-align-items: center;
-justify-content: space-around;
+width: 50%;
 flex-direction: column;
-margin-bottom: 1rem;
+align-items: center;
+height: 100%;
+
 } 
 
 `
@@ -98,7 +103,10 @@ const Excluir = styled.div`
  opacity: 0.8;
  cursor: pointer;
  @media (max-width: 960px) {
-margin-top: 1rem;
+
+width: 90%;
+text-align: center;
+background-color: #e15454;
 
 }
   `
@@ -156,7 +164,7 @@ class CardBag extends Component {
                                 }
                             </select>
                         </Quantidade>
-                        <Valor>R${this.props.price * this.state.quant}</Valor>
+                        <Valor>{(this.props.price * this.state.quant).toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}</Valor>
                             <Excluir onClick={this.handleDeleteCard}>Excluir</Excluir>
                         
                     </ContainerInfos>

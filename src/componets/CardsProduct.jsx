@@ -72,7 +72,7 @@ class CardsProduct extends Component {
 
     formatReal = (int) => {
 
-        let num = parseInt(int)
+        let num = Number(int)
         var result = num.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' });
         return result
 

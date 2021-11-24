@@ -16,6 +16,7 @@ align-items: center;
 margin-top: 1rem;
 
 
+
 `
 
 const Container = styled.div`
@@ -30,6 +31,7 @@ display: flex;
 flex-direction: column;
 align-items: center;
     width: 100vw;
+    
 
 } 
 
@@ -61,6 +63,7 @@ border-radius: 16px;
 flex: none;
 
 
+
 `
 const Image = styled.div`
 img{
@@ -76,39 +79,31 @@ display: flex;
 flex-direction: column;
 justify-content: space-between;
 
+width: 100%;
 
 `
 const Name = styled.span`
-
-display: block;
-text-align: center;
+display: flex;
+align-items: flex-end;
+justify-content: center;
+width: 100%;
 color: #1e1e1e;
-padding: 5px;
-border-radius: 10px;
 font-size: 1.2rem;
 font-weight: bold;
-margin: 10px 0;
-height: 70px;
+height: 100%;
+
 `
 const OldPrice = styled.span`
-display: block;
-text-align: center;
-color: #1e1e1e;
-padding: 5px;
-border-radius: 10px;
+
 
 font-size: 0.9rem;
 text-decoration:line-through;
-flex-grow: 1;
-color: black;
+
 `
 const Price = styled.span`
-display: block;
-text-align: center;
-color: #1e1e1e;
-padding: 5px;
-border-radius: 10px;
-margin-top: -30px;
+
+
+
 
 font-size: 1.2rem;
 font-weight: bold;
@@ -143,6 +138,7 @@ width: 100vw;
 display: flex;
 justify-content: center;
 margin-top: 7rem;
+
 `
 const Escrita = styled.div`
 font-weight: 700;
@@ -157,7 +153,8 @@ text-align: center;
 `
 
 const Geral = styled.div`
-margin-top: 12rem;
+margin-top: 10rem;
+
 `
 const Bag = styled.div`
 background-color: #FF8783;
@@ -171,8 +168,20 @@ margin-top: 10px;
 font-size: 1.2rem;
 font-weight: bold;
 text-align: center;
-`
 
+`
+const ContainerPrice = styled.div`
+display: flex;
+flex-direction: column;
+align-items: center;
+
+`
+const Parcelamento = styled.div`
+width: 90%;
+text-align: center;
+font-size: 0.8rem;
+
+`
 
 export default function CarouselDeProdutos(props) {
 
@@ -181,7 +190,7 @@ export default function CarouselDeProdutos(props) {
             "id": "1",
             "name": "Pano de Prato Estilizado",
             "oldprice": "10",
-            "price": "15",
+            "price": "15.50",
             "image": "https://www.hypeness.com.br/1/2017/04/roupa2.jpg",
             "images": ["https://www.hypeness.com.br/1/2017/04/roupa2.jpg", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkMfBHClUtb-DJoUBbYBsrliteYwIsdt6uGA&usqp=CAU", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQOAFmM7eYYfajiRUny9Q9offXactixWfQ0XQ&usqp=CAU", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSnxNjUA2E3OvehQcprY4-RjbRUt3To-EE1hQ&usqp=CAU"],
             "desc": "Roupas da mais alta qualidade, tentregamos para todo Brasil, além de ser um pano de alta qualidade 100% algodão ",
@@ -247,7 +256,7 @@ export default function CarouselDeProdutos(props) {
             "desc": "Roupas da mais alta qualidade, tentregamos para todo Brasil, além de ser um pano de alta qualidade 100% algodão ",
             "quantidade": "1"
         }
-        
+
     ])
 
     const carousel = useRef(null)
@@ -272,13 +281,20 @@ export default function CarouselDeProdutos(props) {
 
     const handleBag = async (key, item) => {
 
-        let keys =  await Object.keys(localStorage);
-        let quantidade = await  keys.map((el) => JSON.parse(localStorage.getItem(el)))
+        let keys = await Object.keys(localStorage);
+        let quantidade = await keys.map((el) => JSON.parse(localStorage.getItem(el)))
 
         await localStorage.setItem(key, JSON.stringify(item))
         await props.totalItens(quantidade.length + 1)
     }
 
+    const formatReal = (int) => {
+
+        let num = parseInt(int)
+        var result = num.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' });
+        return result
+
+    }
 
     return (<Geral>
         <ContainerInfo>
@@ -287,7 +303,7 @@ export default function CarouselDeProdutos(props) {
 
             </Escrita>
         </ContainerInfo>
-       
+
         <Corpo>
             <Container>
                 {console.log(props)}
@@ -295,7 +311,7 @@ export default function CarouselDeProdutos(props) {
 
                     {data.map((item) => {
                         return <Item>
-                            
+
                             <Link to={`/item/${item.id}`}>
                                 <Image>
                                     <img src={item.image} alt={item.name} />
@@ -304,19 +320,21 @@ export default function CarouselDeProdutos(props) {
 
                             <Info>
 
-                                <Link to={`/item/${item.id}`} style={{ textDecoration: 'none' }}>
+                                <Link to={`/item/${item.id}`} style={{ textDecoration: 'none',width:"100%", height: "60px",display:'flex'}}>
                                     <Name>{item.name}</Name>
                                 </Link>
 
-                                <OldPrice>R${item.oldprice}</OldPrice>
-
-                                <Price>R${item.price}</Price>
+                                <ContainerPrice>
+                                    <OldPrice>{(parseInt(item.oldprice)).toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}</OldPrice>
+                                    <Price>{Number(item.price).toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}</Price>
+                                    <Parcelamento>{Number(item.price).toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })} em 2x de {(item.price / 2).toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })} sem juros</Parcelamento>
+                                </ContainerPrice>
 
                                 <Bag onClick={() => {
                                     handleBag(item.id, item)
-                                }}> 
-                    
-                                Adicionar ao Carrinho 
+                                }}>
+
+                                    Adicionar ao Carrinho
 
                                 </Bag>
 

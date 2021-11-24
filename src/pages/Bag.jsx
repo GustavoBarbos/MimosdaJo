@@ -27,7 +27,7 @@ display: flex;
 justify-content: center;
 align-items: center;
 flex-direction: column;
-background-color: black;
+background-color: #FF8783;
 color: white;
 height: 70px;
 
@@ -221,7 +221,7 @@ export class Bag extends Component {
 
                         <ContainerValorTotal>
                             <ValorTotal>
-                                <Valor>Total ({this.state.produtos.length}) : R$ {this.state.valorTotal}</Valor>
+                                <Valor>Total ({this.state.produtos.length}) : {(this.state.valorTotal).toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}</Valor>
                                 <Parcelamento>Parcelamos em até 3x sem Juros</Parcelamento>
                                 <Button onClick={this.handleCompra} >Comprar</Button>
                             </ValorTotal>
