@@ -133,7 +133,8 @@ export class Bag extends Component {
 
     state = {
         produtos: [],
-        valorTotal: 0
+        valorTotal: 0,
+        mensagem : ""
     }
 
     componentDidMount = async () => {
@@ -166,10 +167,20 @@ export class Bag extends Component {
             return numeros.indexOf(item)
         })
 
-        
+        let resposta = b.map(item => `${item.name} = Quantidade = ${item.quantidade}`)
+
+        let mensagem = `
+         ${resposta[1]} ,
+         ${resposta[0]} , 
+         ${this.state.valorTotal}`
+
+         this.setState({
+            mensagem
+        })
+
         let index = parseInt(retirar.splice(-1))
         this.props.totalItens(b.length)
-        
+
 
     }
 
@@ -181,7 +192,7 @@ export class Bag extends Component {
 
     handleCompra = () => {
 
-        
+
 
     }
 
@@ -212,7 +223,7 @@ export class Bag extends Component {
 
                         :
 
-                        <Container> {this.state.produtos.map((item) => <CardBag delete = {this.props.totalItens} name={item.name} price={item.price} quantidade={item.quantidade} id={item.id} newValue={this.handleNew} />
+                        <Container> {this.state.produtos.map((item) => <CardBag delete={this.props.totalItens} name={item.name} price={item.price} quantidade={item.quantidade} id={item.id} newValue={this.handleNew} />
                         )}
                         </Container>
                     }
@@ -224,7 +235,8 @@ export class Bag extends Component {
                             <ValorTotal>
                                 <Valor>Total ({this.state.produtos.length}) : {(this.state.valorTotal).toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}</Valor>
                                 <Parcelamento>Parcelamos em até 3x sem Juros</Parcelamento>
-                               <a href = "https://api.whatsapp.com/send?phone=5511993418318&text=aloo"><Button onClick={this.handleCompra} >Comprar</Button></a> 
+                               {console.log(this.state.mensagem)}
+                                <a href = {`https://api.whatsapp.com/send?phone=5511993418318&text=${this.state.mensagem    }`} ><Button onClick={this.handleCompra} >Comprar</Button></a>
                             </ValorTotal>
                         </ContainerValorTotal>
                     }
