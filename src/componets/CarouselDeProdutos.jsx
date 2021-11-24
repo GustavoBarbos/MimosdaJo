@@ -280,7 +280,7 @@ export default function CarouselDeProdutos(props) {
 
 
     const handleBag = async (key, item) => {
-
+        
         let keys = await Object.keys(localStorage);
         let quantidade = await keys.map((el) => JSON.parse(localStorage.getItem(el)))
 
@@ -288,13 +288,7 @@ export default function CarouselDeProdutos(props) {
         await props.totalItens(quantidade.length + 1)
     }
 
-    const formatReal = (int) => {
-
-        let num = parseInt(int)
-        var result = num.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' });
-        return result
-
-    }
+   
 
     return (<Geral>
         <ContainerInfo>
@@ -306,7 +300,7 @@ export default function CarouselDeProdutos(props) {
 
         <Corpo>
             <Container>
-                {console.log(props)}
+               
                 <Carousel ref={carousel}>
 
                     {data.map((item) => {
