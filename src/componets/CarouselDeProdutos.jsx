@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom'
 const Corpo = styled.div`
 
 width: 100%;
-background-color: white;
+background-color: rgb(211, 211, 211);
 color: #1e1e1e;
 display: flex;
 justify-content: center;
@@ -287,6 +287,7 @@ export default function CarouselDeProdutos(props) {
 
             </Escrita>
         </ContainerInfo>
+       
         <Corpo>
             <Container>
                 {console.log(props)}
