@@ -112,7 +112,7 @@ class Artesanato extends Component {
             },
             {
                 "id": "3",
-                "name": "Camiseta Larga Skate",
+                "name": "Camiseta Larga Skate,Caixa 19MM/20MM ,Pano de Prato Estilizado",
                 "oldprice": "10",
                 "price": "15",
                 "image": "https://www.hypeness.com.br/1/2017/04/roupa2.jpg",
