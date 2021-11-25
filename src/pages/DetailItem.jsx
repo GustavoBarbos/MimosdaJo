@@ -163,6 +163,13 @@ margin-top: 1rem;
 `
 const ContainerValue = styled.div`
    
+   
+   @media (max-width: 960px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+} 
+
 `
 const Parcelamento = styled.div`
     
@@ -326,7 +333,7 @@ function DetailItem(props) {
 
     return (
         <div style={{ display: 'flex', flexDirection: "column" }}>
-                <Produto>Produtos com 10%OFF</Produto>
+            <Produto>Produtos com 10%OFF</Produto>
             <Scroll>
                 {item.length ?
                     <DivGeral>
@@ -336,7 +343,7 @@ function DetailItem(props) {
                             <ContainerImgPrincipal>
                                 <ImgPrincipal src={principalImage} alt={item.name} />
                                 <ContainerImages>
-                                    
+
                                     {item[0].images.map(produto => <Images onMouseOver={() => setPrincipalImage(produto)} src={produto} alt={item.id} />)}
 
                                 </ContainerImages>
