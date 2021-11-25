@@ -15,13 +15,13 @@ justify-content: center;
 `
 const ContainerCard = styled.div`
 display: flex;
-
+background-color: white;
 flex-direction: column;
 align-items: center;
 width: 80%;
-height: 95%;
-border-radius: 10px;
-justify-content: space-between;
+height: 100%;
+border-radius: 15px;
+justify-content: space-around;
 
 `
 const Img = styled.img`

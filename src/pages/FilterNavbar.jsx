@@ -58,6 +58,7 @@ text-align: center;
 border: 1px solid #FF8783;
 height: 2rem;
 border-radius: 25px;
+outline:none;
 
 @media(max-width : 960px){
 margin-top: 1rem;

@@ -243,7 +243,6 @@ export class Bag extends Component {
                             <ValorTotal>
                                 <Valor>Total ({this.state.produtos.length}) : {(this.state.valorTotal).toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}</Valor>
                                 <Parcelamento>Parcelamos em até 3x sem Juros</Parcelamento>
-                               {console.log(this.state.mensagem)}
                                 <a href = {`https://api.whatsapp.com/send?phone=5511955400291&text=${this.state.mensagem    }`} ><Button onClick={this.handleCompra} >Comprar</Button></a>
                             </ValorTotal>
                         </ContainerValorTotal>
