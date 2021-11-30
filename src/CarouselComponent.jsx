@@ -12,8 +12,8 @@ export default function CarouselComponent() {
           style={{ height: "calc(100vh - 85px)" }}
         />
         <Carousel.Caption>
-          <h3>Second slide label</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          <h3>Promoção com image</h3>
+          <p>descrição da promoção ou algo da sua escolha</p>
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
@@ -25,8 +25,8 @@ export default function CarouselComponent() {
         />
 
         <Carousel.Caption>
-          <h3>Third slide label</h3>
-          <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+          <h3>Promoção com image</h3>
+          <p>descrição da promoção ou algo da sua escolha</p>
         </Carousel.Caption>
       </Carousel.Item>
     </Carousel>

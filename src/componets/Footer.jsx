@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import {IoLogoWhatsapp} from 'react-icons/io'
 import {AiOutlineInstagram} from 'react-icons/ai'
 import {BsFacebook} from 'react-icons/bs'
+import { Link } from 'react-router-dom'
 
 const ContainerGeral = styled.div`
 margin-top: 5rem;
@@ -126,6 +127,7 @@ class Footer extends Component {
 
             <ContainerGeral>
                 <Container>
+                    
                     <Sobre>
                         <Title>Sobre</Title>
                         <SobreText>Um Pouco Mais Sobre Nós</SobreText>
@@ -133,20 +135,20 @@ class Footer extends Component {
 
                     <Atendimento>
                         <Title>Atendimento</Title>
-                        <Text> Segunda à Sexta das 07:30 às 17:15 </Text>
-                        <Text2>Sábados das 07:30 às 13:00 </Text2>
+                        <Text> Segunda à Sexta das 07:30 às 21:00 </Text>
+                        <Text2>Sábados das 07:30 às 18:00 </Text2>
                     </Atendimento>
 
                     <Faleconosco>
                         <Title>Faleconosco</Title>
-                        <FaleconoscoText>(11) 4997-2323 | (11) 91309-8551 <IoLogoWhatsapp style={{color : 'green'}}/> </FaleconoscoText>
+                        <FaleconoscoText>(11) 4488-7795 | (11) 95540-0291 <IoLogoWhatsapp style={{color : 'green'}}/> </FaleconoscoText>
                     </Faleconosco>
 
                     <Acompanhe>
                         <Title>Acompanhe</Title>
                         <Text>
-                            <RedeSocial> <AiOutlineInstagram/>Instagram</RedeSocial>
-                            <RedeSocial><BsFacebook/>Facebook</RedeSocial>
+                           <a style={{textDecoration: 'none',color : 'white'}} href = "https://www.instagram.com/meu_ateliemimosdajo"> <RedeSocial> <AiOutlineInstagram/>Instagram</RedeSocial> </a>
+                           <a style={{textDecoration: 'none',color : 'white'}} href = "https://www.instagram.com/meu_ateliemimosdajo"> <RedeSocial><BsFacebook/>Facebook</RedeSocial> </a>
                         </Text>
                     </Acompanhe>
 
