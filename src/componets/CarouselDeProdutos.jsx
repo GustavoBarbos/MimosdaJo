@@ -190,7 +190,7 @@ export default function CarouselDeProdutos(props) {
 
     useEffect(async () => {
 
-        const { data } = await axios.get("http://localhost:5000/produtos")
+        const { data } = await axios.get("https://mimosjosistem.herokuapp.com/produtos")
         setData(data)
 
 

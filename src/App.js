@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import PrincipalPage from './pages/PrincipalPage';
 import Bag from './pages/Bag';
 import Navbar from './componets/Navbar';
-import FilterNavbar from './pages/FilterNavbar.jsx';
+
 import DetailItem from './pages/DetailItem';
 import Artesanato from './pages/Artesanato';
 import ToalhasPage from './pages/ToalhasPage';

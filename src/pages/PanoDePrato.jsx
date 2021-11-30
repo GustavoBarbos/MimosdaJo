@@ -109,7 +109,7 @@ class PanoDePrato extends Component {
 
     componentDidMount = async () => {
 
-        let { data } = await axios.get('http://localhost:5000/panodeprato')
+        let { data } = await axios.get('https://mimosjosistem.herokuapp.com/panodeprato')
         console.log(data)
         await this.setState({
             data

@@ -109,7 +109,7 @@ class Artesanato extends Component {
 
     componentDidMount = async () => {
 
-        let { data } = await axios.get('http://localhost:5000/artesanatos')
+        let { data } = await axios.get('https://mimosjosistem.herokuapp.com/artesanatos')
         console.log(data)
         await this.setState({
             data

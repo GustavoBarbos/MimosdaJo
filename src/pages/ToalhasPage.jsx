@@ -109,7 +109,7 @@ class ToalhasPage extends Component {
 
     componentDidMount = async () => {
 
-        let { data } = await axios.get('http://localhost:5000/toalhas')
+        let { data } = await axios.get('https://mimosjosistem.herokuapp.com/toalhas')
         console.log(data)
         await this.setState({
             data

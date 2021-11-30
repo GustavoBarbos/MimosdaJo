@@ -220,7 +220,7 @@ function DetailItem(props) {
 
 
         if (params.produto === "produto") {
-            var produto = await axios.get("http://localhost:5000/produtos")
+            var produto = await axios.get("https://mimosjosistem.herokuapp.com/produtos")
             var id = await params.id
 
 
@@ -229,19 +229,19 @@ function DetailItem(props) {
 
 
         if (params.produto === "artesanato") {
-            var produto = await axios.get("http://localhost:5000/artesanatos")
+            var produto = await axios.get("https://mimosjosistem.herokuapp.com/artesanatos")
             var id = await params.id
             
         }
 
         if (params.produto === "toalhas") {
-            var produto = await axios.get("http://localhost:5000/toalhas")
+            var produto = await axios.get("https://mimosjosistem.herokuapp.com/toalhas")
             var id = await params.id
             
         }
 
         if (params.produto === "panoDePrato") {
-            var produto = await axios.get("http://localhost:5000/panoDePrato")
+            var produto = await axios.get("https://mimosjosistem.herokuapp.com/panoDePrato")
             var id = await params.id
             
         }
@@ -318,8 +318,8 @@ function DetailItem(props) {
 
                                 </ContainerValue>
                                 <ContainerButtons>
-                                    <ButtonCarrinho onClick={() => handleBag(item[0].id, item)}>Adicionar ao Carrinho</ButtonCarrinho>
-                                    <ButtonVenda onClick={() => handleCompra(item[0].id, item)}>Comprar</ButtonVenda>
+                                    <ButtonCarrinho onClick={() => handleBag(item[0]._id, item)}>Adicionar ao Carrinho</ButtonCarrinho>
+                                    <ButtonVenda onClick={() => handleCompra(item[0]._id, item)}>Comprar</ButtonVenda>
                                 </ContainerButtons>
                             </ContainerVenda>
                         </Container>
