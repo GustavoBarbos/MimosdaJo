@@ -222,7 +222,6 @@ class Artesanato extends Component {
                         <ContainerProdutos>
                             {this.state.lista.map(item => <CardsProduct totalItens={this.props.totalItens} rota="toalhas" props={item} />)}
                         </ContainerProdutos>
-                        <Footer />
 
                     </Scroll>
                 </>

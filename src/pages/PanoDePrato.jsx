@@ -92,6 +92,8 @@ const Scroll = styled.div`
 overflow-y:auto ;
 scroll-behavior: smooth;
 height: calc(100vh - 85px );
+display: flex;
+flex-direction: column;
 
 ::-webkit-scrollbar{
     display: none;
@@ -222,8 +224,9 @@ class PanoDePrato extends Component {
                         <ContainerProdutos>
                             {this.state.lista.map(item => <CardsProduct totalItens={this.props.totalItens} rota="toalhas" props={item} />)}
                         </ContainerProdutos>
-                        <Footer />
+                        
 
+                    
                     </Scroll>
                 </>
 
