@@ -6,6 +6,9 @@ import Bag from './pages/Bag';
 import Navbar from './componets/Navbar';
 import FilterNavbar from './pages/FilterNavbar.jsx';
 import DetailItem from './pages/DetailItem';
+import Artesanato from './pages/Artesanato';
+import ToalhasPage from './pages/ToalhasPage';
+import PanoDePrato from './pages/PanoDePrato';
 
 
 
@@ -26,10 +29,10 @@ function App() {
       <Routes>
         <Route path='/' element={<PrincipalPage totalItens = {totalItens} />}/>
         <Route path='/bag' element={<Bag totalItens = {totalItens} />} />
-        <Route path='/artesanato' element={<FilterNavbar totalItens = {totalItens} name = {"Artesanato"}/>} />
-        <Route path='/toalhas' element={<FilterNavbar totalItens = {totalItens} name = {"Toalhas"}/>} />
-        <Route path='/panoDePratos' element={<FilterNavbar totalItens = {totalItens} name = {"Pano De Pratos"} />} />
-        <Route path = "/item/:id" element = {<DetailItem authed={true} totalItens = {totalItens}  /> }/>
+        <Route path='/artesanato' element={<Artesanato totalItens = {totalItens} name = {"Artesanato"}/>} />
+        <Route path='/toalhas' element={<ToalhasPage totalItens = {totalItens} name = {"Toalhas"}/>} />
+        <Route path='/panoDePratos' element={<PanoDePrato totalItens = {totalItens} name = {"Pano De Pratos"} />} />
+        <Route path = "/item/:produto/:id" element = {<DetailItem authed={true} totalItens = {totalItens}  /> }/>
       </Routes>
     </div>
   );

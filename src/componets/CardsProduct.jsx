@@ -91,14 +91,14 @@ class CardsProduct extends Component {
             <ContainerGeral>
 
                 <ContainerCard>                    
-                   <Link style ={{ height: "60%", width : "90%"}} to = {`/item/${this.props.props.id}`} > <Img src={this.props.props.image} alt={this.props.name} /> </Link>
+                   <Link style ={{ height: "60%", width : "90%"}} to = {`/item/${this.props.rota}/${this.props.props._id}`} > <Img src={this.props.props.image} alt={this.props.name} /> </Link>
                     <Name>{this.props.props.name}</Name>
                     <ContainerValor>            
                         <Price>{this.formatReal(this.props.props.price)}</Price>
                         <Parcelamento>R$ {this.formatReal(this.props.props.price)} em 2x de {(this.props.props.price / 2).toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })} sem juros</Parcelamento>
                     </ContainerValor>
                     <ContainerButon onClick={() => {
-                                    this.handleBag(this.props.props.id, this.props.props)}} >
+                                    this.handleBag(this.props.props._id, this.props.props)}} >
                         Adicionar ao Carrinho
                     </ContainerButon>
                 </ContainerCard>

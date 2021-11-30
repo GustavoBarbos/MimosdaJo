@@ -231,7 +231,7 @@ export class Bag extends Component {
 
                         :
 
-                        <Container> {this.state.produtos.map((item) => <CardBag delete={this.props.totalItens} name={item.name} price={item.price} quantidade={item.quantidade} id={item.id} image={item.image} newValue={this.handleNew} />
+                        <Container> {this.state.produtos.map((item) => <CardBag delete={this.props.totalItens} name={item.name} price={item.price} quantidade={item.quantidade} id={item._id} image={item.image} newValue={this.handleNew} />
                         )}
                         </Container>
                     }

@@ -20,7 +20,6 @@ class PrincipalPage extends Component {
     render() {
         return (
             <div>
-            
                 <Scroll>
                     <Carousel/>
                     <InfoStore/>
