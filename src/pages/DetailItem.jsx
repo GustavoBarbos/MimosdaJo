@@ -256,7 +256,7 @@ function DetailItem(props) {
         })
 
         setItem(response)
-        console.log(response)
+        
         
         setPrincipalImage(response[0].image)
 
