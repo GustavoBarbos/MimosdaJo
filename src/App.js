@@ -9,8 +9,14 @@ import DetailItem from './pages/DetailItem';
 import Artesanato from './pages/Artesanato';
 import ToalhasPage from './pages/ToalhasPage';
 import PanoDePrato from './pages/PanoDePrato';
+import styled from 'styled-components';
 
-
+const Entrega =styled.div`
+background-color: black;
+color: white;
+text-align: center;
+font-size: 0.7rem;
+`
 
 
 function App() {
@@ -25,6 +31,7 @@ function App() {
 
   return (
     <div className="App">
+      <Entrega>Prazo de fabricação e envio de 12 dias úteis após comprovação de pagamento + prazo do correio </Entrega>
       <Navbar itens={itensLength}/>
       <Routes>
         <Route path='/' element={<PrincipalPage totalItens = {totalItens} />}/>

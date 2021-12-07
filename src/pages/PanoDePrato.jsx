@@ -91,7 +91,7 @@ flex-wrap: wrap;
 const Scroll = styled.div`
 overflow-y:auto ;
 scroll-behavior: smooth;
-height: calc(100vh - 85px );
+height: calc(100vh - 109px );
 display: flex;
 flex-direction: column;
 
@@ -112,7 +112,7 @@ class PanoDePrato extends Component {
     componentDidMount = async () => {
 
         let { data } = await axios.get('https://mimosjosistem.herokuapp.com/panodeprato')
-        console.log(data)
+       
         await this.setState({
             data
         })

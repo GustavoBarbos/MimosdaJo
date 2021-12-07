@@ -196,7 +196,9 @@ const DivGeral = styled.div`
 const Scroll = styled.div`
 overflow-y:auto ;
 scroll-behavior: smooth;
-height: calc(100vh - 109px);
+height: calc(100vh - 150px);
+display: flex;
+flex-direction: column;
 
 ::-webkit-scrollbar{
     display: none;
