@@ -151,7 +151,7 @@ function Navbar({itens}) {
       <FiltersNavbar>
         <Link style={{ color: 'black', textDecoration: "none" }} to='/artesanato'><li>Artesanato</li></Link>
         <Link style={{ color: 'black', textDecoration: "none" }} to='/toalhas'><li>Toalhas</li></Link>
-        <Link style={{ color: 'black', textDecoration: "none" }} to='/panoDePratos'><li>Pano de Pratos</li></Link>
+        {/* <Link style={{ color: 'black', textDecoration: "none" }} to='/panoDePratos'><li>Pano de Pratos</li></Link> */}
       </FiltersNavbar>
       <Link to='/bag'><Bag> <FaShoppingBag style={{ color: '#FF8783' }} /> <Count>{itens}</Count></Bag>  </Link>
       <Menu onClick={() => setBoolean(!boolean)}><AiOutlineMenu /></Menu>
@@ -163,7 +163,7 @@ function Navbar({itens}) {
 
         <Link onClick={() => setBoolean(!boolean)} style={{ color: 'black', textDecoration: "none",backgroundColor: "white" }} to='/artesanato'><li>Artesanato</li></Link>
         <Link onClick={() => setBoolean(!boolean)} style={{ color: 'black', textDecoration: "none",backgroundColor: "white" }} to='/toalhas'><li>Toalhas</li></Link>
-        <Link onClick={() => setBoolean(!boolean)} style={{ color: 'black', textDecoration: "none",backgroundColor: "white" }} to='/panoDePratos'><li>Pano de Pratos</li></Link>
+        {/* <Link onClick={() => setBoolean(!boolean)} style={{ color: 'black', textDecoration: "none",backgroundColor: "white" }} to='/panoDePratos'><li>Pano de Pratos</li></Link> */}
 
       </ResponsiveNavbar>
       :

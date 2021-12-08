@@ -211,7 +211,7 @@ flex-direction: column;
 function DetailItem(props) {
 
     const params = useParams()
-    console.log(params)
+    
 
     const [item, setItem] = useState([])
    

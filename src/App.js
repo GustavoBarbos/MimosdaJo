@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import PrincipalPage from './pages/PrincipalPage';
 import Bag from './pages/Bag';
 import Navbar from './componets/Navbar';
+import { useParams } from 'react-router';
 
 import DetailItem from './pages/DetailItem';
 import Artesanato from './pages/Artesanato';
@@ -19,7 +20,7 @@ font-size: 0.7rem;
 `
 
 
-function App() {
+function App(props) {
 
   const [itensLength, setItensLength] = useState(0)
 
@@ -31,6 +32,8 @@ function App() {
 
   return (
     <div className="App">
+
+
       <Entrega>Prazo de fabricação e envio de 12 dias úteis após comprovação de pagamento + prazo do correio </Entrega>
       <Navbar itens={itensLength}/>
       <Routes>
@@ -38,7 +41,7 @@ function App() {
         <Route path='/bag' element={<Bag totalItens = {totalItens} />} />
         <Route path='/artesanato' element={<Artesanato totalItens = {totalItens} name = {"Artesanato"}/>} />
         <Route path='/toalhas' element={<ToalhasPage totalItens = {totalItens} name = {"Toalhas"}/>} />
-        <Route path='/panoDePratos' element={<PanoDePrato totalItens = {totalItens} name = {"Pano De Pratos"} />} />
+        {/* <Route path='/panoDePratos' element={<PanoDePrato totalItens = {totalItens} name = {"Pano De Pratos"} />} /> */}
         <Route path = "/item/:produto/:id" element = {<DetailItem authed={true} totalItens = {totalItens}  /> }/>
       </Routes>
     </div>
